@@ -17,7 +17,7 @@ function recorrer(obj){
  
 
   return (
-    (championsAll != undefined) ? (<div className='grid gap-4 grid-cols-5 grid-rows-3'>
+    (championsAll != undefined) ? (<div className='grid gap-4 grid-cols-8 grid-rows-3'>
      { recorrer(championsAll) }
       {champions.map(x => <Card champion={x}></Card>)}
     </div>

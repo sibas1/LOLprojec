@@ -15,14 +15,20 @@ export const ChampionsProvider = ({children}) =>{
         const res =await champiosAll()
         setChampionsAll(res.data.data)
      }
-    const getdatail = async () => {
-        const res = await Datail()
+    const getdatail = async (champion) => {
+        const res = await Datail(champion)
         setDetail(res.data.data)
+    }
+    const limpiarD = ()=>{
+        setDetail(null)
     }
     return (
         <Championscontext.Provider value={{
             getchampions,
-            championsAll
+            championsAll,
+            getdatail,
+            detail,
+            limpiarD
         }}>
             {children}
         </Championscontext.Provider>)
