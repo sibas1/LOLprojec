@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react'
-import { champiosAll } from '../api/dataApi'
+import React, { Component, useEffect } from 'react'
+import { useChampions } from '../context/champions'
+import Card from '../componets/Card'
 function HomePage() {
- let all= {}
- const allc = (async ()=>{
-   const a=await champiosAll
-  return a
-  })
+  const { championsAll, getchampions } = useChampions()
+  let champions =[]
 
-  useEffect(async () => {
-    all= await allc()
-    console.log(all)
-  })
+function recorrer(obj){
+  for (const key in obj) { 
+    champions.push(key)
+  }
+}
+
+  useEffect(() => {
+    getchampions()
+    }, [])
+ 
+
   return (
-    
-    
-    <div>aa</div>
+    (championsAll != undefined) ? (<div className='grid gap-4 grid-cols-5 grid-rows-3'>
+     { recorrer(championsAll) }
+      {champions.map(x => <Card champion={x}></Card>)}
+    </div>
+    ):null
   )
 }
 
