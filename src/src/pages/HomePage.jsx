@@ -1,14 +1,25 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { useChampions } from '../context/champions'
 import Card from '../componets/Card'
 function HomePage() {
   const { championsAll, getchampions } = useChampions()
   let champions =[]
-
+  const [filtter, setFiltter] =useState("")
 function recorrer(obj){
+  if(filtter==""){
   for (const key in obj) { 
-    champions.push(key)
+    champions.push({ key: key, tags: championsAll[key].tags})
+    }
+  } else {
+    for (const key in obj) {
+      if ((championsAll[key].tags[1] == filtter) || (championsAll[key].tags[0] == filtter)) champions.push({ key: key, tags: championsAll[key].tags })
+    }
   }
+}
+function handelF(e) {
+  console.log(e.target.value)
+  setFiltter(e.target.value)
+
 }
 
   useEffect(() => {
@@ -16,12 +27,24 @@ function recorrer(obj){
     }, [])
  
 
-  return (
-    (championsAll != undefined) ? (<div className='grid gap-4 grid-cols-8 grid-rows-3'>
-     { recorrer(championsAll) }
-      {champions.map(x => <Card champion={x}></Card>)}
+  return (<div className='flex-col'>
+    <div className=" my-2 border w-[80%] ml-[10%] rounded-tl-lg border-slate-500 my-8">
+      <ul className='flex justify-between px-3'>
+        <button onClick={handelF} value="" className=' text-slate-300  hover:text-white m-2'>Todos</button>
+        <button onClick={handelF} value="Assassin" className=' text-slate-300  hover:text-white m-2'>Asesinos</button>
+        <button onClick={handelF} value="Fighter" className=' text-slate-300  hover:text-white m-2'>Luchadores</button>
+        <button onClick={handelF} value="Mage" className=' text-slate-300  hover:text-white m-2'>Magos</button>
+        <button onClick={handelF} value="Marksman" className=' text-slate-300  hover:text-white m-2'>Tiradores</button>
+        <button onClick={handelF} value="Support" className=' text-slate-300  hover:text-white m-2'>Soportes</button>
+        <button onClick={handelF} value="Tank" className=' text-slate-300  hover:text-white m-2'>Tanques</button>
+      </ul>
+      </div>
+    {(championsAll != undefined) ? (<div className='grid gap-4 grid-cols-8 grid-rows-3'>
+      {recorrer(championsAll) }
+      {champions.map(x => <Card champion={x.key}></Card>)}
     </div>
-    ):null
+    ):null}
+  </div>
   )
 }
 
