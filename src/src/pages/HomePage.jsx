@@ -28,8 +28,8 @@ function handelF(e) {
  
 
   return (<div className='flex-col'>
-    <div className=" my-2 border w-[80%] ml-[10%] rounded-tl-lg border-slate-500 my-8">
-      <ul className='flex justify-between px-3'>
+    <div className=" select-none border w-[80%] ml-[10%] rounded-tl-lg border-slate-500 my-8">
+      <ul className='flex flex-wrap justify-between px-3'>
         <button onClick={handelF} value="" className=' text-slate-300  hover:text-white m-2'>Todos</button>
         <button onClick={handelF} value="Assassin" className=' text-slate-300  hover:text-white m-2'>Asesinos</button>
         <button onClick={handelF} value="Fighter" className=' text-slate-300  hover:text-white m-2'>Luchadores</button>
@@ -39,7 +39,7 @@ function handelF(e) {
         <button onClick={handelF} value="Tank" className=' text-slate-300  hover:text-white m-2'>Tanques</button>
       </ul>
       </div>
-    {(championsAll != undefined) ? (<div className='grid gap-4 grid-cols-8 grid-rows-3'>
+    {(championsAll != undefined) ? (<div className=' flex flex-wrap  w-[90%] ml-[5%] my-8'>
       {recorrer(championsAll) }
       {champions.map(x => <Card champion={x.key}></Card>)}
     </div>

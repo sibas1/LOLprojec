@@ -4,12 +4,15 @@
 
 body{ 
   display: flex;
-  flex-direction: column;
-  background-color: #202020;
+
+  background-image: url(../public/assets/fondn.jpg);
   color:  white;
   
 }
 #root{
-  display: flex;
-    flex-direction: column;
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
