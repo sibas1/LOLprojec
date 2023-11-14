@@ -93,7 +93,7 @@ function DatailChapion() {
     <div className='relative max-w-[100%]'>
 
       <div className='flex flex-col w-[100%] items-center'>
-        <section className='relative min-h-[75vh]  pt-[1px] pb-[75px] w-[100%] bg-black'>
+        <section className='relative min-h-[75vh]  pt-[15px] pb-[75px] w-[100%] bg-black'>
           <div className='relative w-full pb-[50%]'>
             <div className='absolute object-center min-h-[50vh] w-[100hv] h-[110%]'>
               <img onLoad={scroll} className=' object-cover  object-center w-[100%] h-[100%] blur' src={imageToPreload.src}></img>

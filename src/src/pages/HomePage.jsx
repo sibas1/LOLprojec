@@ -16,6 +16,7 @@ function HomePage() {
       }
     }
   }
+
   function handelF(e) {
     console.log(e.target.value)
     setFiltter(e.target.value)
@@ -47,5 +48,4 @@ function HomePage() {
   </div>
   )
 }
-
 export default HomePage
