@@ -2,7 +2,7 @@
 
 
 # Usado
-*react js
+* react js
 * manejo de api con React contex
 * tailwind
   
